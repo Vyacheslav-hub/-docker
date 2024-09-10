@@ -1,4 +1,11 @@
-from nginx:alpine
+FROM nginx:alpine
 
-COPY ./index.html /usr/share/nginx/html/index.html
+WORKDIR /app
+
+RUN apk add php
+
+COPY ./nginx /etc/nginx/conf.d
+COPY ./index.php /usr/share/nginx/html/index.php
+
+EXPOSE 80
 
